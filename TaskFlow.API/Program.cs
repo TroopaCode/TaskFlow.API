@@ -8,6 +8,7 @@ using TaskFlow.API.Exceptions;
 using TaskFlow.API.Models;
 using TaskFlow.API.Repositories;
 using TaskFlow.API.Repositories.Interfaces;
+using TaskFlow.API.Repositories.UnitOfWork;
 using TaskFlow.API.Services;
 using TaskFlow.API.Services.Interfaces;
 using TaskFlow.API.Validators;
@@ -31,6 +32,9 @@ builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 //Repository
 builder.Services.AddScoped<ITaskRepository, TaskRepository>();
+
+//Unit of Work
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 
 builder.Services.AddControllers();

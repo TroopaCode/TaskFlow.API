@@ -14,7 +14,7 @@ namespace TaskFlow.API.AutoMappers
 
             //Con esto evitas que el Id se mapee al crear un nuevo TaskItem, ya que el Id se genera automáticamente en la base de datos
             CreateMap<TaskItemInsertDTO, TaskItem>()
-            .ForMember(dest => dest.Id, opt => opt.Ignore());
+            .ForMember(dest => dest.TaskItemId, opt => opt.Ignore());
         }
     }
 }

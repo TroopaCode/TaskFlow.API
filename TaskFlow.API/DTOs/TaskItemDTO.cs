@@ -2,7 +2,7 @@
 {
     public class TaskItemDTO
     {
-        public int Id { get; set; }
+        public int TaskItemID { get; set; }
         public string Title { get; set; }
         public bool IsCompleted { get; set; }
     }

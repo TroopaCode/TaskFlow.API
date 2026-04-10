@@ -1,4 +1,5 @@
 ﻿using TaskFlow.API.Models;
+using TaskFlow.API.Paginacion;
 
 namespace TaskFlow.API.Repositories.Interfaces
 {
@@ -9,5 +10,8 @@ namespace TaskFlow.API.Repositories.Interfaces
         Task<TaskItem> Create(TaskItem task);
         Task<bool> Update(TaskItem task);
         Task<bool> Delete(TaskItem task);
+
+        //Agrega un nuevo método para obtener tareas paginadas
+        Task<IEnumerable<TaskItem>> GetPaged(int page, int pageSize);
     }
 }

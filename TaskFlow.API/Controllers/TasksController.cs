@@ -4,6 +4,7 @@ using System.Collections;
 using TaskFlow.API.Data;
 using TaskFlow.API.DTOs;
 using TaskFlow.API.Models;
+using TaskFlow.API.Paginacion;
 using TaskFlow.API.Services;
 using TaskFlow.API.Services.Interfaces;
 
@@ -20,10 +21,19 @@ namespace TaskFlow.API.Controllers
             _taskService = taskService;
         }
 
+        /*
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TaskItemDTO>>> GetAll()
         {
             var tasks = await _taskService.GetAll();
+            return Ok(tasks);
+        }*/
+
+        
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<TaskItemDTO>>> GetAll([FromQuery] PaginationParams pagination)
+        {
+            var tasks = await _taskService.GetPaged(pagination);
             return Ok(tasks);
         }
 
@@ -41,7 +51,7 @@ namespace TaskFlow.API.Controllers
 
             return CreatedAtAction(
                 nameof(GetById),
-                new { id = task.Id },
+                new { id = task.TaskItemID },
                 task
             );
         }
